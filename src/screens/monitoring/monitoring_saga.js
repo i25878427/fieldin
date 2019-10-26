@@ -40,6 +40,9 @@ export const monitoringSaga = [
 
 const fakeData = (data) => {
     return new Promise((resolve, reject) => {
-        resolve(data)
+        setTimeout(() => {
+            resolve(data)
+        }, 0);
+       
     })
 } 

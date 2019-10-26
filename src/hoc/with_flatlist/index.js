@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, FlatList, ActivityIndicator } from 'react-native'
+import PropTypes from 'prop-types'
 import _ from 'lodash'
 import SearchBar from '../../components/search_bar'
 import styles from './styles'
@@ -9,27 +10,27 @@ export default withFlatList = WrappedComponent => {
         constructor(props) {
             super(props)
             this.state = {
-                data: this.props.data,
-                dataAfterFilter: this.props.data,
+                data: props.data,
+                dataAfterFilter: props.data,
                 searchBarValue: ''
             }
         }
         render() {
             const { dataAfterFilter } = this.state
             return (
-                    <FlatList
-                        ListHeaderComponent={this.renderListHeaderComponent}
-                        ListEmptyComponent={this.renderListEmptyComponent}
-                        ItemSeparatorComponent={this.renderItemSeparatorComponent}
-                        keyExtractor={item => item.id}
-                        data={dataAfterFilter}
-                        // extraData={this.state}
-                        renderItem={this.renderItem}
-                        // onEndReached={this.handleLoadMore}
-                        // onEndReachedThreshold={50}
-                        ListFooterComponent={this.renderFooter}
-                        showsVerticalScrollIndicator={false}
-                    />
+                <FlatList
+                    ListHeaderComponent={this.renderListHeaderComponent}
+                    ListEmptyComponent={this.renderListEmptyComponent}
+                    ItemSeparatorComponent={this.renderItemSeparatorComponent}
+                    keyExtractor={item => `${item.id}`}
+                    data={dataAfterFilter}
+                    // extraData={this.state}
+                    renderItem={this.renderItem}
+                    onEndReached={this.handleLoadMore}
+                    // onEndReachedThreshold={50}
+                    ListFooterComponent={this.renderFooter}
+                    showsVerticalScrollIndicator={false}
+                />
             )
         }
         renderListHeaderComponent = () => this.props.showSearchBar ?
@@ -42,6 +43,11 @@ export default withFlatList = WrappedComponent => {
             null
 
         renderListEmptyComponent = () => {
+            if (this.props.loading) return (
+                <View style={styles.emptyListContainer}>
+                    <ActivityIndicator size={'large'} />
+                </View>
+            )
             if (this.state.data && this.state.data.length === 0) {
                 return (
                     <View style={styles.emptyListContainer}>
@@ -76,6 +82,9 @@ export default withFlatList = WrappedComponent => {
                 dataAfterFilter: dataAfterFilter
             })
         }
+    }
+    WithFlatList.propTypes = {
+        data: PropTypes.array
     }
     return WithFlatList
 }

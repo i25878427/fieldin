@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, Image } from 'react-native'
 import { compose, branch, withProps } from 'recompose'
+import PropTypes from 'prop-types'
 import CONSTANTS from '../../../constants'
 import { hoursPassedUntilNow } from '../../../helpers/dates'
 import withFlatlist from '../../../hoc/with_flatlist'
@@ -9,7 +10,7 @@ import styles from './monitoring_details_list_item_styles'
 
 const MonitoringDetailsListItem = ({ name, shouldOpenModal, scouting_date, iconSource }) => {
     return (
-        <View style={styles.itemContainer}>
+        <View style={styles.itemContainer}  testID={name.split(" ").join("_")}>
             <Text>{name}</Text>
             {
                 (
@@ -30,8 +31,7 @@ const enhance = compose(
             date  = props.scouting_date
         }
         return {
-            onPress: () => props.onPress(props.name, date, props.type),
-            testID: props.name.split(" ").join("_"),
+            onPress: () => props.onPress(props.name, date, props.type)
         }
     }),
     branch(
@@ -41,3 +41,11 @@ const enhance = compose(
 )
 
 export default enhance(MonitoringDetailsListItem)
+
+
+MonitoringDetailsListItem.propTypes = {
+    name: PropTypes.string, 
+    shouldOpenModal: PropTypes.bool, 
+    scouting_date: PropTypes.number, 
+    iconSource:  PropTypes.node.isRequired
+}

@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, TextInput } from 'react-native'
+import PropTypes from 'prop-types'
 import styles from './styles'
 
 const SearchBar = ({ type, value, onChangeText, placeholder="Search" }) => {
-    debugger
     return (
         <View style={styles.container}>
             <TextInput
@@ -19,3 +19,9 @@ const SearchBar = ({ type, value, onChangeText, placeholder="Search" }) => {
 
 export default SearchBar
 
+SearchBar.propTypes = {
+    onChangeText: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    type: PropTypes.string,
+    value: PropTypes.string
+}

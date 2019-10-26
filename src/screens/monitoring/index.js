@@ -15,8 +15,7 @@ class Monitoring extends Component {
         this.props.getTraps()
     }
     render() {
-        const { blocks } = this.props.blocks
-        const { traps } = this.props.traps
+        const { blocks, blocksLoading, traps, trapsLoading } = this.props.monitoring
         return (
             <View style={styles.container} testID='monitoring'>
                 <Header title={'Monitoring'} />
@@ -32,6 +31,7 @@ class Monitoring extends Component {
                         showSearchBar={true}
                         type={CONSTANTS.BLOCKS}
                         iconSource={require('../../assets/icons/bell.png')}
+                        loading={trapsLoading}
                     />
                     <MonitoringDetails
                         data={traps}
@@ -39,6 +39,7 @@ class Monitoring extends Component {
                         showSearchBar={true}
                         type={CONSTANTS.TRAPS}
                         iconSource={require('../../assets/icons/alert.png')}
+                        loading={blocksLoading}
                     />
                 </Tabs>
             </View >
@@ -47,8 +48,7 @@ class Monitoring extends Component {
 }
 
 const mapStateToProps = state => ({
-    blocks: { ...state.blocks },
-    traps: { ...state.traps }
+    monitoring: { ...state.monitoring }
 })
 const mapDispatchToProps = {
     getBlocks: getBlocks,

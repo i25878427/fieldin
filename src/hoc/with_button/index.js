@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import { TouchableOpacity, View } from "react-native"
+import PropTypes from 'prop-types'
 
-export default withButton = WrappedComponent => {
+const withButton = WrappedComponent => {
     class WithButton extends Component {
         onPressHandle = async () => {
             await this.props.onPress(this.props);
@@ -21,5 +22,15 @@ export default withButton = WrappedComponent => {
             );
         }
     }
+    WithButton.propTypes = {
+        disabled: PropTypes.bool,
+        testID: PropTypes.string,
+        style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+    }
     return WithButton;
+
 };
+
+
+
+export default withButton

@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux'
-import traps from './traps'
-import blocks from './blocks'
+import monitoring from './monitoring'
 
 const appReducer = combineReducers({
-    traps,
-    blocks
+    monitoring
 })
 
 
