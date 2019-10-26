@@ -3,23 +3,19 @@ import { TouchableOpacity, View } from "react-native"
 
 export default withButton = WrappedComponent => {
     class WithButton extends Component {
-
         onPressHandle = async () => {
             await this.props.onPress(this.props);
-
         }
-
         render() {
             if (this.props.disabled) {
                 return (
-                    <View style={this.props.style}>
+                    <View style={this.props.style} testID={this.props.testID}>
                         <WrappedComponent {...this.props} />
                     </View>
                 )
             }
-
             return (
-                <TouchableOpacity onPress={this.onPressHandle} style={this.props.style}>
+                <TouchableOpacity onPress={this.onPressHandle} style={this.props.style} testID={this.props.testID}>
                     <WrappedComponent {...this.props} />
                 </TouchableOpacity>
             );

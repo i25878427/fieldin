@@ -14,14 +14,19 @@ class Monitoring extends Component {
         this.props.getBlocks()
         this.props.getTraps()
     }
-
     render() {
         const { blocks } = this.props.blocks
         const { traps } = this.props.traps
         return (
             <View style={styles.container} testID='monitoring'>
                 <Header title={'Monitoring'} />
-                <Tabs>
+                <Tabs
+                    testID="tabs"
+                    routes={[
+                        { key: 'first', title: 'Pests', accessibilityLabel: 'pests' },
+                        { key: 'second', title: 'Traps', accessibilityLabel: 'traps' }
+                    ]}
+                >
                     <MonitoringDetails
                         data={blocks}
                         showSearchBar={true}
@@ -36,7 +41,7 @@ class Monitoring extends Component {
                         iconSource={require('../../assets/icons/alert.png')}
                     />
                 </Tabs>
-            </View>
+            </View >
         )
     }
 }

@@ -30,7 +30,8 @@ const enhance = compose(
             date  = props.scouting_date
         }
         return {
-            onPress: () => props.onPress(props.name, date, props.type)
+            onPress: () => props.onPress(props.name, date, props.type),
+            testID: props.name.split(" ").join("_"),
         }
     }),
     branch(

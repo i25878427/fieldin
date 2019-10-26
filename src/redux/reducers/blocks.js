@@ -1,7 +1,7 @@
 import ACTIONS_TYPES from '../action_types'
 import {mergeObjectsArrayById} from '../../helpers/arrays'
 const initialState = {
-    blocks: [],
+    blocks: []
 }
 
 export default (state = initialState, { type, payload }) => {

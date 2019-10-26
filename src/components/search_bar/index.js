@@ -2,12 +2,14 @@ import React from 'react'
 import { View, TextInput } from 'react-native'
 import styles from './styles'
 
-const SearchBar = ({ value, onChangeText, placeholder="Search" }) => {
+const SearchBar = ({ type, value, onChangeText, placeholder="Search" }) => {
+    debugger
     return (
         <View style={styles.container}>
             <TextInput
+                testID={`searchbar_${type.toLowerCase()}`}
                 placeholder={placeholder}
-                style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                style={styles.text}
                 onChangeText={text => onChangeText(text)}
                 value={value}
             />
