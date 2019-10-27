@@ -28,7 +28,6 @@ const withButton = WrappedComponent => {
         style: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
     }
     return WithButton;
-
 };
 
 

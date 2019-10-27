@@ -5,7 +5,7 @@ import blocksMonitorData from '../../mock_data/blocks_monitor.json'
 import trapsData from '../../mock_data/traps.json'
 import {fakeData} from '../../mock_data/mock_api_request'
 
-export function* getBlocks(action) {
+export function* getBlocks() {
     const [blocks, blocksMonitor] = yield all([
         fakeData(blocksData),
         fakeData(blocksMonitorData)
@@ -20,7 +20,7 @@ export function* getBlocks(action) {
     })
 }
 
-export function* getTraps(action) {
+export function* getTraps() {
     const traps = yield fakeData(trapsData)
     yield put({
         type: ACTIONS_TYPES.GET_TRAPS_RECEIVED,

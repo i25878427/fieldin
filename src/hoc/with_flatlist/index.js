@@ -24,23 +24,22 @@ export default withFlatList = WrappedComponent => {
                     ItemSeparatorComponent={this.renderItemSeparatorComponent}
                     keyExtractor={item => `${item.id}`}
                     data={dataAfterFilter}
-                    // extraData={this.state}
                     renderItem={this.renderItem}
-                    onEndReached={this.handleLoadMore}
-                    // onEndReachedThreshold={50}
                     ListFooterComponent={this.renderFooter}
                     showsVerticalScrollIndicator={false}
                 />
             )
         }
-        renderListHeaderComponent = () => this.props.showSearchBar ?
-            <SearchBar
-                onChangeText={this.onSearchBarChangeText}
-                value={this.state.searchBarValue}
-                type={this.props.type}
-            />
-            :
-            null
+        renderListHeaderComponent = () =>
+            this.props.showSearchBar
+                ?
+                <SearchBar
+                    onChangeText={this.onSearchBarChangeText}
+                    value={this.state.searchBarValue}
+                    type={this.props.type}
+                />
+                :
+                null
 
         renderListEmptyComponent = () => {
             if (this.props.loading) return (
@@ -64,10 +63,6 @@ export default withFlatList = WrappedComponent => {
             {...item}
             {..._.omit(this.props, ['data'])}
         />
-
-        handleLoadMore = () => {
-
-        }
 
         renderFooter = () => {
             if (this.state.data) return null
