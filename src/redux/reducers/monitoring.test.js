@@ -1,4 +1,5 @@
 import monitoringReducer from './monitoring'
+import {initialState} from './monitoring'
 import ACTIONS_TYPES from '../action_types'
 import trapsData from '../../mock_data/traps.json'
 import blocksData from '../../mock_data/blocks.json'
@@ -6,12 +7,6 @@ import blocksMonitorData from '../../mock_data/blocks_monitor.json'
 
 describe('monitoringReducer', () => {
     describe('when initalizing', () => {
-        const initialState = {
-            traps: [],
-            trapsLoading: true,
-            blocks: [],
-            blocksLoading: true
-        }
         const traps = trapsData
         const blocks = blocksData
         const blocksMonitor = blocksMonitorData

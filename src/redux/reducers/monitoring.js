@@ -1,7 +1,7 @@
 import ACTIONS_TYPES from '../action_types'
 import {mergeObjectsArrayById} from '../../helpers/arrays'
 
-const initialState = {
+export const initialState = {
     traps: [],
     trapsLoading: true,
     blocks: [],
