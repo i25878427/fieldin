@@ -38,6 +38,10 @@
     "react-test-renderer": "16.9.0"
   },
   "jest": {
+    "testMatch": [
+      "<rootDir>/__tests__/**/*.test.js?(x)",
+      "<rootDir>/src/**/*.test.js"
+    ],
     "preset": "react-native"
   },
   "detox": {
