@@ -43,5 +43,30 @@ describe('Testing array helper', () => {
         const key2 = 'id'
         expect(mergeObjectsArrayById(array1, array2, key1, key2)).toEqual([{value: '1', id: '1'}])
     })
+
+    it('array1 is not array', () => {
+        const array1 = ''
+        const array2 = [{value: '1', id: '1'}]
+        const key1 = 'id'
+        const key2 = 'id'
+        expect(mergeObjectsArrayById(array1, array2, key1, key2)).toEqual([{value: '1', id: '1'}])
+    })
+
+    it('array2 is not array', () => {
+        const array1 = [{value: '1', id: '1'}]
+        const array2 = ''
+        const key1 = 'id'
+        const key2 = 'id'
+        expect(mergeObjectsArrayById(array1, array2, key1, key2)).toEqual([{value: '1', id: '1'}])
+    })
+
+    it('array1 and array2 are not arrays', () => {
+        const array1 = ''
+        const array2 = ''
+        const key1 = 'id'
+        const key2 = 'id'
+        expect(mergeObjectsArrayById(array1, array2, key1, key2)).toEqual([])
+    })
+
 })
 
